@@ -12,11 +12,11 @@ import {
   Heading,
   Text,
   Tag,
-  TagLabel,
+  Input,
 } from "@chakra-ui/react";
 import { MinusIcon, AddIcon } from "@chakra-ui/icons";
 
-const Card = () => {
+const Card = ({ user }) => {
   return (
     <Accordion allowMultiple borderColor={"transparent"}>
       <AccordionItem>
@@ -26,10 +26,11 @@ const Card = () => {
               <AccordionButton
                 border="none"
                 _hover={{ backgroundColor: "transparent" }}
+                _focus={{ outline: "none" }}
               >
                 <Box flex="1" textAlign="left">
                   <Grid templateColumns="repeat(4, 1fr)">
-                    <GridItem colSpan={1} bg="tomato">
+                    <GridItem colSpan={1}>
                       <Center
                         justifyItems={"center"}
                         alignItems={"center"}
@@ -44,18 +45,24 @@ const Card = () => {
                       </Center>
                     </GridItem>
 
-                    <GridItem colSpan={3} bg="papayawhip" pl="4" py={"6"}>
-                      <Heading pb="5">User Name</Heading>
-                      <Text>Username: Test username</Text>
-                      <Text>Email: Test email</Text>
-                      <Text>Website: Test website</Text>
-                      <Text>Company: Test Compnay</Text>
+                    <GridItem colSpan={3} pl="4">
+                      <Heading pb="3">{user.name}</Heading>
+                      <Text>Username: {user.username}</Text>
+                      <Text>Email: {user.email}</Text>
+                      <Text>Website: {user.website}</Text>
+                      <Text>Company: {user.company.name}</Text>
                       <Tag mt="4" size="sm">
                         Sample Tag
                       </Tag>
+                      <Input
+                        type="text"
+                        mt="4"
+                        display="block"
+                        width="300px"
+                        placeholder="Add a tag"
+                        onClick={(e) => e.preventDefault()}
+                      />
                     </GridItem>
-
-                    {/* <GridItem></GridItem> */}
                   </Grid>
                 </Box>
                 {isExpanded ? (
@@ -65,14 +72,14 @@ const Card = () => {
                 )}
               </AccordionButton>
             </h2>
-            <AccordionPanel pb={4}>
+            <AccordionPanel pb="3">
               <Grid templateColumns="repeat(4, 1fr)" flex="1">
                 <GridItem colSpan="1" />
                 <GridItem colSpan="3" pl="4">
-                  <Text>Street: Sample Street</Text>
-                  <Text>Suite: Sample Suite</Text>
-                  <Text>City: Sample City</Text>
-                  <Text>Zipcode:Sample Zipcode</Text>
+                  <Text>Street: {user.address.street}</Text>
+                  <Text>Suite: {user.address.suite}</Text>
+                  <Text>City: {user.address.city}</Text>
+                  <Text>Zipcode: {user.address.zipcode}</Text>
                 </GridItem>
               </Grid>
             </AccordionPanel>

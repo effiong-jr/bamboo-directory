@@ -1,22 +1,28 @@
+import { useEffect } from "react";
 import { Box } from "@chakra-ui/react";
 import Filter from "../components/Filter";
 import Card from "../components/Card";
 
+import { useUsers } from "../hooks/users";
+
 const App = () => {
+  const users = useUsers();
+
+  console.log(users);
+
+  useEffect(() => {
+    console.log(users);
+  }, [users]);
+
   return (
-    <Box
-      //   border="1px"
-      paddingTop="20"
-      //   borderColor="gray.200"
-      maxW="container.md"
-      mx={"auto"}
-    >
+    <Box paddingTop="20" maxW="container.md" mx={"auto"}>
       {/* Filter Section */}
       <Filter />
 
       {/* User Cards Section */}
       <Box>
-        <Card />
+        {/* {typeof users === "object" &&
+          (users || []).map((user) => <Card key={user.id} user={user} />)} */}
       </Box>
     </Box>
   );
