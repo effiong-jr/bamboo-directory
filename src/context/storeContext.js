@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { runInAction } from "mobx";
 import { useLocalObservable, observer } from "mobx-react";
 import axios from "axios";
+import { UserEndpoints } from "../constants/endpoints";
 
 export const StoreContext = createContext();
 
@@ -11,11 +12,10 @@ export const StoreProvider = observer(({ children }) => {
 
     getUsers() {
       axios
-        .get("https://jsonplaceholder.typicode.com/users")
+        .get(UserEndpoints.getUsers)
         .then((response) => runInAction(() => (this.users = response.data)));
     },
 
-    // addTag(users) {
     addTag(userId, tag) {
       const updatedList = store.users.map((user) => {
         if (user.id === userId) {
@@ -32,10 +32,6 @@ export const StoreProvider = observer(({ children }) => {
     },
 
     filterByTag(users) {
-      // const taggedUsers = store.users.filter(
-      //   (user) => user?.tags && user?.tags.includes(tag.toLowerCase())
-      // );
-
       runInAction(() => (this.users = users));
     },
   }));

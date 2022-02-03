@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { action } from "mobx";
 import { observer } from "mobx-react-lite";
 import { Box } from "@chakra-ui/react";
 import Filter from "../components/Filter";
@@ -27,13 +26,9 @@ const App = observer(() => {
     );
 
     if (taggedUsers.length) {
-      // taggedUsers.length ? setUsers(taggedUsers) : setUsers([]);
       taggedUsers.length && setUsers(taggedUsers);
-      // setUsers(taggedUsers);
       return;
     }
-
-    // setUsers([]);
   };
 
   const handleSearchByName = () => {
@@ -56,6 +51,7 @@ const App = observer(() => {
     }
 
     setUsers(store.users);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tag]);
 
   useEffect(() => {
@@ -65,6 +61,7 @@ const App = observer(() => {
     }
 
     setUsers(store.users);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name]);
 
   return (

@@ -1,25 +1,6 @@
 import { Center, Input } from "@chakra-ui/react";
-// import { useEffect, useState } from "react";
 
-const Filter = ({
-  name,
-  tag,
-  setName,
-  setTag,
-  // handleSearchByName,
-  // handleSearchByTag,
-}) => {
-  // const [name, setName] = useState("");
-  // const [tag, setTag] = useState("");
-
-  // useEffect(() => {
-  //   handleSearchByName(name);
-  // }, [name]);
-
-  // useEffect(() => {
-  //   handleSearchByTag(tag);
-  // }, [tag]);
-
+const Filter = ({ name, tag, setName, setTag }) => {
   return (
     <Center flex="1" justifyContent="center" mb={"6"}>
       <Input
