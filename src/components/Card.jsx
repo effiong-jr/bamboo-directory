@@ -12,13 +12,14 @@ import {
   Heading,
   Text,
   Tag,
-  Input,
 } from "@chakra-ui/react";
 import { MinusIcon, AddIcon } from "@chakra-ui/icons";
 
+import AddTagForm from "./AddTagForm";
+
 const Card = ({ user }) => {
   return (
-    <Accordion allowMultiple borderColor={"transparent"}>
+    <Accordion allowMultiple borderColor={"transparent"} mb="20">
       <AccordionItem>
         {({ isExpanded }) => (
           <>
@@ -34,7 +35,7 @@ const Card = ({ user }) => {
                       <Center
                         justifyItems={"center"}
                         alignItems={"center"}
-                        p={"6"}
+                        p={"4"}
                       >
                         <Image
                           borderRadius="full"
@@ -51,17 +52,14 @@ const Card = ({ user }) => {
                       <Text>Email: {user.email}</Text>
                       <Text>Website: {user.website}</Text>
                       <Text>Company: {user.company.name}</Text>
-                      <Tag mt="4" size="sm">
-                        Sample Tag
-                      </Tag>
-                      <Input
-                        type="text"
-                        mt="4"
-                        display="block"
-                        width="300px"
-                        placeholder="Add a tag"
-                        onClick={(e) => e.preventDefault()}
-                      />
+                      {(user?.tags || []).map((tag, index) => (
+                        <Tag key={index} mt="4" size="sm" mr="2">
+                          {tag}
+                        </Tag>
+                      ))}
+
+                      {/* ADD TAG FORM */}
+                      <AddTagForm userId={user.id} />
                     </GridItem>
                   </Grid>
                 </Box>

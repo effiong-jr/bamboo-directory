@@ -1,10 +1,43 @@
 import { Center, Input } from "@chakra-ui/react";
+// import { useEffect, useState } from "react";
 
-const Filter = () => {
+const Filter = ({
+  name,
+  tag,
+  setName,
+  setTag,
+  // handleSearchByName,
+  // handleSearchByTag,
+}) => {
+  // const [name, setName] = useState("");
+  // const [tag, setTag] = useState("");
+
+  // useEffect(() => {
+  //   handleSearchByName(name);
+  // }, [name]);
+
+  // useEffect(() => {
+  //   handleSearchByTag(tag);
+  // }, [tag]);
+
   return (
     <Center flex="1" justifyContent="center" mb={"6"}>
-      <Input borderRightRadius="0" maxW="sm" placeholder="Search by name" />
-      <Input borderLeftRadius="0" maxW="sm" placeholder="Search by tag" />
+      <Input
+        name="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        borderRightRadius="0"
+        maxW="sm"
+        placeholder="Search by name"
+      />
+      <Input
+        name="tag"
+        value={tag}
+        onChange={(e) => setTag(e.target.value)}
+        borderLeftRadius="0"
+        maxW="sm"
+        placeholder="Search by tag"
+      />
     </Center>
   );
 };

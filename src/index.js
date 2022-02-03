@@ -5,11 +5,15 @@ import "./index.css";
 import App from "./pages/App";
 import reportWebVitals from "./reportWebVitals";
 
+import { StoreProvider } from "./context/storeContext";
+
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
+    <StoreProvider>
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
+    </StoreProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
