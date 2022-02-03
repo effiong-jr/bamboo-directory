@@ -40,6 +40,7 @@ const Card = ({ user }) => {
                         <Image
                           borderRadius="full"
                           boxSize="150px"
+                          minWidth="150px"
                           src="https://i.pravatar.cc/150"
                           alt="user"
                         />
